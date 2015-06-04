@@ -56,7 +56,7 @@ void Router::initVars( string filename )
 			 for ( int j = i; j < line.size(); j++ )
 			 {
 			      tmp *= 10;
-			      tmp += (line[i] - '0');
+			      tmp += (line[j] - '0');
 			 }
 		    
 		    if ( line[i] == ',' )
