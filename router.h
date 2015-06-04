@@ -20,7 +20,8 @@ public:
      void receiver();
      void updateTable();
      void initVars( string filename);
-
+     void printState();
+     
      string vectorToString(int array[]);
      int *stringToVector(string s);
 

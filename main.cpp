@@ -16,24 +16,39 @@ int main(int argc, char* argv[])
      sock.sendMessage(argv[2]);
      */
 
-     Router* A = new Router('A', 10001);
+     Router* A = new Router('A', 10000);
      A-> initVars("test.txt");
 
      Router* B = new Router('B', 10001);
      B-> initVars("test.txt");
 
-     Router* C = new Router('C', 10001);
+     Router* C = new Router('C', 10002);
      C-> initVars("test.txt");
      
-     Router* D = new Router('D', 10001);
+     Router* D = new Router('D', 10003);
      D-> initVars("test.txt");
 
-     Router* E = new Router('E', 10001);
+     Router* E = new Router('E', 10004);
      E-> initVars("test.txt");
 
-     Router* F = new Router('F', 10001);
+     Router* F = new Router('F', 10005);
      F-> initVars("test.txt");
 
+     A-> printState();
+     B-> printState();
+     C-> printState();
+     D-> printState();
+     E-> printState();
+     F-> printState();
+
+     char* a = new char[1];
+     a[0] = 'H';
+/*     
+     RouterSocket sock = RouterSocket(10000);
+     sock.sendMessage(a);
+
+     A->receiver();
+*/   
      return 0;
 }
 

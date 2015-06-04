@@ -68,9 +68,15 @@ void Router::initVars( string filename )
 
      }
 
-     
+     file.close();
+}
+
+void Router::printState()
+{
      for ( int i = 0; i < n_neighbors; i++ )
-	  cout << my_neighbors[i].name << my_neighbors[i].portnum  << endl; 
+	  cout << my_neighbors[i].name << ' '
+	       << my_neighbors[i].portnum << endl;
+
 
      for ( int i = 0; i < 6; i++ )
      {
@@ -81,8 +87,6 @@ void Router::initVars( string filename )
 		    cout << m_routeTable[i][j] << ' '; 
 	  cout << endl;
      }
-
-     file.close();
 }
 
 int nodeNumber(char nodeName)
