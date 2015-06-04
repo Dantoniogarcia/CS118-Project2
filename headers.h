@@ -29,8 +29,7 @@ class RouterSocket;
 
 #include "router.h"
 #include "routerSocket.h"
-#include "router.cpp"
-#include "routerSocket.cpp"
+
 using namespace std;
 
 
