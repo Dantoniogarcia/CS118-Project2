@@ -19,7 +19,8 @@ public:
      void routeMessage(int destPort, char *message);
      void receiver();
      void updateTable();
-
+	 string vectorToString(int array[]);
+	 int *stringToVector(string s);
      // Must Define still
 //     char calculateDV();
      
