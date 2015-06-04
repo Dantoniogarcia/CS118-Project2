@@ -4,6 +4,14 @@
 #include "headers.h"
 using namespace std;
 
+
+struct neighbor{
+     int portnum;
+     string name;
+};
+
+
+
 class Router
 {
 public:
@@ -19,7 +27,9 @@ private:
      string m_id;
      int m_port;
      int** m_routeTable;
-     
+
+     neighbor* my_neighbors;
+     int n_neighbors;
 };
 
 #endif

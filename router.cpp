@@ -5,6 +5,7 @@ using namespace std;
 // Router Type
 //////////////////////////////////////////////////////////////////////
 
+
 Router::Router( string name, int port )
 {
      m_id = name;
@@ -16,12 +17,15 @@ Router::Router( string name, int port )
 	  for ( int j = 0; j < 6; j++ )
 	       m_routeTable[i][j] = INT_MAX;
      }
+
+     my_neighbors = new neighbor[6];
+     n_neighbors = 0;
 }
 
-void initRoutingTable( string s )
+void initVars( string s )
 {
      
-}    
+}
 
 void Router::routeMessage(int destPort, char *message)
 {
