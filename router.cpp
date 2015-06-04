@@ -26,7 +26,44 @@ void initVars( string s )
 {
      
 }
+/*
+int nodeNumber(char nodeName)
+{
+	switch(nodeName)
+	{
+	case "A": return 0;
+		break;
+	case "B": return 1;
+		break;
+	case "C": return 2;
+		break;
+	case "D": return 3;
+		break;
+	case "E": return 4;
+		break;
+	case "F": return 5;
+		break;
+	}
 
+}
+
+void calcDV()
+{
+	/*if(no data for node, and data available for node, update)
+	if(distance to neighbor + DV from neighbor to node < current DV to node, update)
+	find out which neighbor has lowest cost to destination, send to that one.  
+	int destNode = nodeNumber(node);
+	int shortest = 10;
+	int closestNeigh;
+	for(int x =1; x< n_neighbors; x++)
+	{
+	if(data_table[nodeNumber(my_neighbors[x].name)][destNode] < shortest)
+		shortest = data_table[nodeNumber(my_neighbors[x].name)][destNode];
+		closestNeigh=x;
+	}
+	routeMessage(my_neighbors[closestNeigh].portnum, "send this whatever");
+}
+*/
 void Router::routeMessage(int destPort, char *message)
 {
      RouterSocket s = RouterSocket(destPort);
