@@ -1,4 +1,5 @@
 #include "headers.h"
+#include <fstream>
 using namespace std;
 
 //////////////////////////////////////////////////////////////////////
@@ -6,7 +7,7 @@ using namespace std;
 //////////////////////////////////////////////////////////////////////
 
 
-Router::Router( string name, int port )
+Router::Router( char name, int port )
 {
      m_id = name;
 
@@ -22,9 +23,66 @@ Router::Router( string name, int port )
      n_neighbors = 0;
 }
 
-void initVars( string s )
+void Router::initVars( string filename )
 {
+     ifstream file;
+     file.open( "test.txt" );
+     string line;
+
+     while( !file.eof() )
+     {
+	  getline(file, line); 
+	  if ( line[0] == m_id )
+	  {
+	       // initialize neighbors
+	       my_neighbors[n_neighbors].name = line[2];
+	       int tmp = 0;
+	       for ( int i = 4; line[i] != ','; i++ )
+	       {
+		    tmp *= 10;
+		    tmp += (line[i] - '0');
+	       }
+	       my_neighbors[n_neighbors].portnum = tmp;
+	       n_neighbors++;
+
+
+	       // initialize Routing Table
+	       int count = 0;
+	       tmp = 0;
+	       for ( int i = 0; i < line.size(); i++ )
+	       {
+		    if ( count == 3 )
+			 for ( int j = i; j < line.size(); j++ )
+			 {
+			      tmp *= 10;
+			      tmp += (line[i] - '0');
+			 }
+		    
+		    if ( line[i] == ',' )
+			 count++; 
+	       }
+	       m_routeTable[line[0]-'A'][line[2]-'A'] = tmp;
+	       m_routeTable[line[0]-'A'][line[0]-'A'] = 0;
+	  }
+
+
+     }
+
      
+     for ( int i = 0; i < n_neighbors; i++ )
+	  cout << my_neighbors[i].name << my_neighbors[i].portnum  << endl; 
+
+     for ( int i = 0; i < 6; i++ )
+     {
+	  for ( int j = 0; j < 6; j++ )
+	       if ( m_routeTable[i][j] == INT_MAX )
+		    cout << "i" << ' ';
+	       else
+		    cout << m_routeTable[i][j] << ' '; 
+	  cout << endl;
+     }
+
+     file.close();
 }
 
 void Router::routeMessage(int destPort, char *message)

@@ -7,7 +7,7 @@ using namespace std;
 
 struct neighbor{
      int portnum;
-     string name;
+     char name;
 };
 
 
@@ -15,16 +15,16 @@ struct neighbor{
 class Router
 {
 public:
-     Router( string name, int port );
+     Router( char name, int port );
      void routeMessage(int destPort, char *message);
      void receiver();
      void updateTable();
-
+     void initVars( string filename);
      // Must Define still
 //     char calculateDV();
      
 private:
-     string m_id;
+     char m_id;
      int m_port;
      int** m_routeTable;
 
