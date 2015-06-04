@@ -21,6 +21,7 @@ Router::Router( char name, int port )
 
      my_neighbors = new neighbor[6];
      n_neighbors = 0;
+
 }
 
 void Router::initVars( string filename )
