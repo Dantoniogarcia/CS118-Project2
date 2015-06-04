@@ -15,7 +15,7 @@ RouterSocket::RouterSocket(int port)
      //filling in server information
      cAddr.sin_family = AF_INET;
      cAddr.sin_addr.s_addr = INADDR_ANY;
-     cAddr.sin_port = htons(0); //since it is the client the OS can choose the port
+     cAddr.sin_port = htons(port); //since it is the client the OS can choose the port
      //binding the socket to a port
      if(bind(s, (struct sockaddr *)&cAddr, sizeof(cAddr))<0)
      {

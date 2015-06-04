@@ -1,17 +1,27 @@
 #include "headers.h"
-
+using namespace std;
 
 //////////////////////////////////////////////////////////////////////
-// Function Implementations
+// Router Type
 //////////////////////////////////////////////////////////////////////
 
-Router::Router(int portNumber, char **neighbors)
+Router::Router( string name, int port )
 {
-//     int x = strlen(neighbors);
-//     int y = strlen(*neighbors);
-//     dataTable = neighbors;
-     m_portNumber = portNumber;
+     m_id = name;
+
+     m_routeTable = new int*[6];
+     for ( int i = 0; i < 6; i++ )
+     {
+	  m_routeTable[i] = new int[6];
+	  for ( int j = 0; j < 6; j++ )
+	       m_routeTable[i][j] = INT_MAX;
+     }
 }
+
+void initRoutingTable( string s )
+{
+     
+}    
 
 void Router::routeMessage(int destPort, char *message)
 {
@@ -29,7 +39,7 @@ void Router::receiver()
      setsockopt(s, SOL_SOCKET, SO_BROADCAST,&broadcast, sizeof broadcast);
      memset(&si_me, 0, sizeof(si_me));
      si_me.sin_family = AF_INET;
-     si_me.sin_port = htons( m_portNumber );
+     si_me.sin_port = htons( 0 ); // needs to be a client port number
      si_me.sin_addr.s_addr = INADDR_ANY;
      assert(::bind(s, (sockaddr *)&si_me, sizeof(sockaddr))!=-1);
 
@@ -44,8 +54,6 @@ void Router::receiver()
 	  //routeMessage(
      }
 }	
-
-
 
 
 

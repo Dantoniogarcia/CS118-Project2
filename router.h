@@ -2,22 +2,24 @@
 #define ROUTER
 
 #include "headers.h"
+using namespace std;
 
 class Router
 {
 public:
-     Router(int portNumber, char **neighbors);
+     Router( string name, int port );
      void routeMessage(int destPort, char *message);
      void receiver();
+     void updateTable();
 
      // Must Define still
-//     void updateTable();
 //     char calculateDV();
      
 private:
-     int m_portNumber;
-     int destPort;
-     char** dataTable;
+     string m_id;
+     int m_port;
+     int** m_routeTable;
+     
 };
 
 #endif

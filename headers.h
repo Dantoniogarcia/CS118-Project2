@@ -16,6 +16,7 @@ class RouterSocket;
 #include <cstring>
 #include <cstdio>
 #include <assert.h>
+#include <climits>
 
 #include <fstream>
 #include <cstring>
@@ -28,6 +29,8 @@ class RouterSocket;
 
 #include "router.h"
 #include "routerSocket.h"
+
+using namespace std;
 
 
 #endif
