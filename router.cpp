@@ -85,6 +85,51 @@ void Router::initVars( string filename )
      file.close();
 }
 
+int nodeNumber(char nodeName)
+{
+	switch(nodeName)
+	{
+	case 'A': return 0;
+		break;
+	case 'B': return 1;
+		break;
+	case 'C': return 2;
+		break;
+	case 'D': return 3;
+		break;
+	case 'E': return 4;
+		break;
+	case 'F': return 5;
+		break;
+	}
+
+}
+/*
+void calcDV()
+{
+	nodeNumber(m_id);
+
+	if(no data for node, and data available for node, update)
+	if(distance to neighbor + DV from neighbor to node < current DV to node, update)
+	find out which neighbor has lowest cost to destination, send to that one.  
+
+	int destNode = nodeNumber(node);
+	int shortest = 9999999;
+	int closestNeigh;
+	for(int x =1; x< n_neighbors; x++)
+	{
+	if(data_table[nodeNumber(my_neighbors[x].name)][destNode] < shortest)
+		shortest = data_table[nodeNumber(my_neighbors[x].name)][destNode];
+		closestNeigh=x;
+	}
+	routeMessage(my_neighbors[closestNeigh].portnum, "send this whatever");
+}
+*/
+/*
+void updateTable(int row, int column, int value)
+{
+
+}*/
 void Router::routeMessage(int destPort, char *message)
 {
      RouterSocket s = RouterSocket(destPort);
@@ -118,4 +163,32 @@ void Router::receiver()
 }	
 
 
+string Router::vectorToString(int array[])
+{
+  string s;
+  int ii =0;
+  for(int i =0; i< 6; i++)
+  {
+    s += array[i] + '0';
+    ii= i+1;
+    if(i ==5)
+	break;
+    s += ',';
+  }
+  return s;
+}
+
+int * Router::stringToVector(string s)
+{
+  int *array = new int[6];
+  int ii = 0;
+  array[0] = s[0] - '0';
+  array[1] = s[2] - '0';
+  array[2] = s[4] - '0';
+  array[3] = s[6] - '0';
+  array[4] = s[8] - '0';
+  array[5] = s[10] - '0'; 
+  return array;
+
+}
 

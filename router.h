@@ -20,6 +20,10 @@ public:
      void receiver();
      void updateTable();
      void initVars( string filename);
+
+     string vectorToString(int array[]);
+     int *stringToVector(string s);
+
      // Must Define still
 //     char calculateDV();
      
